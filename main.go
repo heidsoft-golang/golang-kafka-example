@@ -12,8 +12,8 @@ import (
 )
 
 const (
-	topic         = "message-log"
-	brokerAddress = "localhost:9092"
+	topic         = "test"
+	brokerAddress = "172.16.59.41:9092"
 )
 
 func main() {
@@ -33,7 +33,7 @@ func produce(ctx context.Context) {
 	l := log.New(os.Stdout, "kafka writer: ", 0)
 	// intialize the writer with the broker addresses, and the topic
 	w := kafka.NewWriter(kafka.WriterConfig{
-		Brokers: []string{brokerAddress},
+		Brokers: []string{"172.16.59.41:9092", "172.16.59.42:9092", "172.16.59.43:9092"},
 		Topic:   topic,
 		// assign the logger to the writer
 		Logger: l,
